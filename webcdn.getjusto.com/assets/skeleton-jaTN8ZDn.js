@@ -1,0 +1,1 @@
+import{j as r}from"./jsx-runtime-BGxL3LVy.js";import{c as t}from"./utils-mMyIM9tf.js";function s({className:e,...o}){return r.jsx("div",{className:t("animate-pulse rounded-md bg-muted-foreground/10",e),...o})}export{s as S};

@@ -1,0 +1,21 @@
+HTTrack3.49-2+htsswf+htsjava launched on Wed, 05 Nov 2025 11:13:19 at https://www.hanoisushi.cl/pedir +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://www.hanoisushi.cl/pedir -O1 "C:\My Web Sites\hanoi sushi" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+11:13:51	Warning: 	Found for https://www.hanoisushi.cl/
+11:13:51	Warning: 	File has moved from https://www.hanoisushi.cl/ to /pedir
+11:13:52	Error: 	"Not Found" (404) at link https://www.hanoisushi.cl/Local Huehuraba - Av. Pedro fontova 7280 local 115 (from https://www.hanoisushi.cl/pedir)
+11:13:52	Error: 	"Not Found" (404) at link https://www.hanoisushi.cl/Av. Pedro Fontova 7280, Local 115 (from https://www.hanoisushi.cl/pedir)
+11:13:52	Error: 	"Not Found" (404) at link https://www.hanoisushi.cl/Cam. Los Trapenses 3200, Lo Barnechea, 7700334, Región Metropolitana (from https://www.hanoisushi.cl/pedir)
+11:13:56	Error: 	"Not Found" (404) at link https://www.hanoisushi.cl/documentos-legales/"http://accounts.getjusto.com/" (from https://www.hanoisushi.cl/documentos-legales/termsAndConditions)
+11:13:56	Error: 	"Not Found" (404) at link https://www.hanoisushi.cl/documentos-legales/"https://wordtohtml.net" (from https://www.hanoisushi.cl/documentos-legales/termsAndConditions)
+11:13:57	Error: 	"Not Found" (404) at link https://www.hanoisushi.cl/documentos-legales/"http://www.reservando.com/"><span (from https://www.hanoisushi.cl/documentos-legales/privacy)
+11:13:57	Error: 	"Not Found" (404) at link https://www.hanoisushi.cl/documentos-legales/"https://accounts.getjusto.com"><span (from https://www.hanoisushi.cl/documentos-legales/privacy)
+11:13:57	Error: 	"Not Found" (404) at link https://www.hanoisushi.cl/documentos-legales/"https://justo.link/mgvk5jffp"><span (from https://www.hanoisushi.cl/documentos-legales/privacy)
+
+HTTrack Website Copier/3.49-2 mirror complete in 38 seconds : 149 links scanned, 139 files written (5262820 bytes overall) [1892220 bytes received at 49795 bytes/sec], 6393554 bytes transferred using HTTP compression in 99 files, ratio 18%, 14.9 requests per connection
+(8 errors, 2 warnings, 0 messages)

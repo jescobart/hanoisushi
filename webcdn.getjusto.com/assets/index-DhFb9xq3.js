@@ -1,0 +1,1 @@
+import{j as r}from"./jsx-runtime-BGxL3LVy.js";import{f as n}from"./index-Dh_ekISa.js";import{b as t}from"./useWebsite-B2NA3eOh.js";function a(o){const e=t();return r.jsx(r.Fragment,{children:n(o.number,o.showCurrencyCode?"moneyCode":"money",o.countryCode||e)})}export{a as F};

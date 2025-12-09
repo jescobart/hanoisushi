@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HANOI SUSHI - Restaurante Premium Nikkei</title>
+    <meta name="description" content="Hanoi Sushi Premium Nikkei ubicados en Huechuraba y Lo Barnechea. Calidad, Originalidad, Sensaciones Inolvidables. Delivery y retiro disponible.">
+    <meta property="og:title" content="HANOI SUSHI - Restaurante Premium Nikkei">
+    <meta property="og:description" content="Hanoi Sushi Premium Nikkei ubicados en Huechuraba. Calidad, Originalidad, Sensaciones Inolvidables.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CL">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <style>
+        :root {
+            --primary: #019389;
+            --primary-dark: #017a72;
+            --secondary: #f5f5f5;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #fff;
+            --border: #e5e5e5;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .dropdown-menu a:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+        
+        /* Header Actions */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-dark);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .cart-btn {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .hero-slider {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%);
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            color: var(--white);
+            max-width: 500px;
+            z-index: 1;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .hero-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .hero-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .hero-dot.active {
+            background: var(--white);
+        }
+        
+        /* Promociones Section */
+        .promos-section { padding: 4rem 1rem; background: var(--secondary); }
+        .section-title { text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; color: var(--text-dark); }
+        .promos-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .promo-card { display: block; background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; text-decoration: none; color: inherit; }
+        .promo-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .promo-card img { width: 100%; height: 200px; object-fit: cover; }
+        .promo-content { padding: 1.5rem; }
+        .promo-badge { display: inline-block; background: var(--primary); color: var(--white); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .promo-content h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .promo-content p { color: var(--text-light); margin-bottom: 1rem; }
+        .promo-price { display: flex; align-items: center; gap: 1rem; }
+        .price-old { text-decoration: line-through; color: var(--text-light); }
+        .price-new { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        
+        /* Categorías Section */
+        .categories-section { padding: 4rem 1rem; }
+        .categories-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; }
+        .category-card { text-align: center; padding: 2rem 1rem; background: var(--white); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--text-dark); transition: all 0.3s; }
+        .category-card:hover { border-color: var(--primary); box-shadow: var(--shadow); }
+        .category-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; display: block; }
+        .category-card h4 { font-size: 1rem; font-weight: 600; }
+        
+        /* Productos Destacados */
+        .featured-section { padding: 4rem 1rem; background: var(--secondary); }
+        .products-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .product-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s; }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-image { position: relative; height: 200px; overflow: hidden; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .product-card:hover .product-image img { transform: scale(1.05); }
+        .product-tag { position: absolute; top: 10px; left: 10px; background: #ff6b6b; color: var(--white); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+        .product-info { padding: 1.5rem; }
+        .product-info h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .product-info p { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; }
+        .product-price { font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+        .add-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: var(--white); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+        .add-btn:hover { background: var(--primary-dark); }
+        
+        /* Locales Section */
+        .locales-section { padding: 4rem 1rem; }
+        .locales-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .local-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+        .local-card img { width: 100%; height: 200px; object-fit: cover; }
+        .local-info { padding: 1.5rem; }
+        .local-info h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary); }
+        .local-detail { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--text-light); }
+        .local-detail i { color: var(--primary); width: 20px; margin-top: 3px; }
+        .local-actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        
+        /* Footer */
+        footer { background: #1a1a1a; color: var(--white); padding: 4rem 1rem 2rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; }
+        .footer-logo img { height: 80px; margin-bottom: 1rem; }
+        .footer-section h4 { font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--primary); }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.75rem; }
+        .footer-section a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--primary); }
+        .social-links { display: flex; gap: 1rem; }
+        .social-links a { width: 40px; height: 40px; border-radius: 50%; background: #333; display: flex; align-items: center; justify-content: center; color: var(--white); transition: background 0.3s; }
+        .social-links a:hover { background: var(--primary); }
+        .footer-bottom { max-width: 1200px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid #333; text-align: center; color: #888; }
+        
+        /* WhatsApp Float Button */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; transition: transform 0.3s; text-decoration: none; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        
+        /* Mobile Menu */
+        .mobile-nav { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem; z-index: 999; box-shadow: var(--shadow); }
+        .mobile-nav.active { display: block; }
+        .mobile-nav a { display: block; padding: 0.75rem 1rem; color: var(--text-dark); text-decoration: none; border-radius: 8px; }
+        .mobile-nav a:hover { background: var(--secondary); color: var(--primary); }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .header-actions .btn-outline { display: none; }
+            .hero { height: 400px; }
+            .hero-content { left: 5%; right: 5%; }
+            .hero-content h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+        }
+</style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="https://tofuu.getjusto.com/orioneat-local/resized2/s84YdnWJtwcyS6PdE-300-x.webp" alt="Hanoi Sushi Logo">
+            </a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li class="dropdown">
+                        <span class="dropdown-toggle">
+                            Carta <i class="fas fa-chevron-down"></i>
+                        </span>
+                        <div class="dropdown-menu">
+                            <a href="carta.html#rolls">Rolls</a>
+                            <a href="carta.html#sashimi">Sashimi</a>
+                            <a href="carta.html#niguiris">Niguiris</a>
+                            <a href="carta.html#tablas">Tablas</a>
+                            <a href="carta.html#entradas">Entradas</a>
+                            <a href="carta.html#platos-calientes">Platos Calientes</a>
+                            <a href="carta.html#postres">Postres</a>
+                            <a href="carta.html#bebidas">Bebidas</a>
+                        </div>
+                    </li>
+                    <li><a href="delivery.html">Zona de Reparto</a></li>
+                    <li><a href="locales.html">Locales</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="btn btn-outline" data-user-btn>
+                    <i class="fas fa-user"></i> Ingresar
+                </button>
+                <a href="carta.html" class="btn btn-primary cart-btn" data-cart-btn>
+                    <i class="fas fa-shopping-bag"></i> Pedir
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Inicio</a>
+            <a href="carta.html">Carta Completa</a>
+            <a href="carta.html#rolls">Rolls</a>
+            <a href="carta.html#sashimi">Sashimi</a>
+            <a href="carta.html#tablas">Tablas</a>
+            <a href="delivery.html">Zona de Reparto</a>
+            <a href="locales.html">Locales</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="https://wa.me/56222447450" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section con Slider -->
+    <section class="hero">
+        <div class="hero-slider" id="heroSlider">
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1600');">
+                <div class="hero-content">
+                    <h1>Hanoi Sushi</h1>
+                    <p>Premium Nikkei - Calidad, Originalidad, Sensaciones Inolvidables</p>
+                    <a href="carta.html" class="btn btn-primary"><i class="fas fa-utensils"></i> Ver Carta</a>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=1600');">
+                <div class="hero-content">
+                    <h1>Delivery & Retiro</h1>
+                    <p>Disfruta nuestros platos en la comodidad de tu hogar</p>
+                    <a href="delivery.html" class="btn btn-primary"><i class="fas fa-motorcycle"></i> Ver Cobertura</a>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1553621042-f6e147245754?w=1600');">
+                <div class="hero-content">
+                    <h1>Nuevos Locales</h1>
+                    <p>Huechuraba y Lo Barnechea - Los Trapenses</p>
+                    <a href="locales.html" class="btn btn-primary"><i class="fas fa-map-marker-alt"></i> Ver Locales</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-dots">
+            <span class="hero-dot active" data-slide="0"></span>
+            <span class="hero-dot" data-slide="1"></span>
+            <span class="hero-dot" data-slide="2"></span>
+        </div>
+    </section>
+
+    <!-- Promociones -->
+    <section class="promos-section">
+        <h2 class="section-title">🔥 Promociones Especiales</h2>
+        <div class="promos-grid">
+            <a href="carta.html#tablas" class="promo-card">
+                <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=600" alt="Tabla Hanoi">
+                <div class="promo-content">
+                    <span class="promo-badge">-20% OFF</span>
+                    <h3>Tabla Hanoi Premium</h3>
+                    <p>40 piezas variadas + 2 bebidas incluidas</p>
+                    <div class="promo-price">
+                        <span class="price-old">$32.990</span>
+                        <span class="price-new">$26.390</span>
+                    </div>
+                </div>
+            </a>
+            <a href="carta.html#tablas" class="promo-card">
+                <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600" alt="Combo Familiar">
+                <div class="promo-content">
+                    <span class="promo-badge">COMBO</span>
+                    <h3>Combo Familiar Nikkei</h3>
+                    <p>60 piezas + Gyozas + 4 bebidas</p>
+                    <div class="promo-price">
+                        <span class="price-old">$49.990</span>
+                        <span class="price-new">$39.990</span>
+                    </div>
+                </div>
+            </a>
+            <a href="carta.html#rolls" class="promo-card">
+                <img src="https://images.unsplash.com/photo-1534256958597-7fe685cbd745?w=600" alt="Happy Hour">
+                <div class="promo-content">
+                    <span class="promo-badge">HAPPY HOUR</span>
+                    <h3>2x1 en Rolls Seleccionados</h3>
+                    <p>Lunes a Jueves de 13:00 a 16:00 hrs</p>
+                    <div class="promo-price">
+                        <span class="price-new">Consultar</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Categorías -->
+    <section class="categories-section">
+        <h2 class="section-title">Nuestra Carta</h2>
+        <div class="categories-grid">
+            <a href="carta.html#rolls" class="category-card">
+                <i class="fas fa-fish"></i>
+                <h4>Rolls</h4>
+            </a>
+            <a href="carta.html#sashimi" class="category-card">
+                <i class="fas fa-leaf"></i>
+                <h4>Sashimi</h4>
+            </a>
+            <a href="carta.html#niguiris" class="category-card">
+                <i class="fas fa-circle"></i>
+                <h4>Niguiris</h4>
+            </a>
+            <a href="carta.html#tablas" class="category-card">
+                <i class="fas fa-th-large"></i>
+                <h4>Tablas</h4>
+            </a>
+            <a href="carta.html#entradas" class="category-card">
+                <i class="fas fa-bowl-food"></i>
+                <h4>Entradas</h4>
+            </a>
+            <a href="carta.html#platos-calientes" class="category-card">
+                <i class="fas fa-fire"></i>
+                <h4>Platos Calientes</h4>
+            </a>
+            <a href="carta.html#postres" class="category-card">
+                <i class="fas fa-ice-cream"></i>
+                <h4>Postres</h4>
+            </a>
+            <a href="carta.html#bebidas" class="category-card">
+                <i class="fas fa-wine-glass"></i>
+                <h4>Bebidas</h4>
+            </a>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="featured-section">
+        <h2 class="section-title">⭐ Los Más Pedidos</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=500" alt="Ebi Maguro Roll">
+                    <span class="product-tag">Popular</span>
+                </div>
+                <div class="product-info">
+                    <h3>Ebi Maguro Roll</h3>
+                    <p>Camarón tempura, palta, queso crema, cubierto de atún y salsa especial</p>
+                    <div class="product-footer">
+                        <span class="product-price">$8.990</span>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=500" alt="Hanoi Special">
+                    <span class="product-tag">Chef</span>
+                </div>
+                <div class="product-info">
+                    <h3>Hanoi Special Roll</h3>
+                    <p>Salmón, palta, queso crema, cubierto de salmón flameado y cebollín</p>
+                    <div class="product-footer">
+                        <span class="product-price">$9.490</span>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=500" alt="Dragon Roll">
+                    <span class="product-tag">Nuevo</span>
+                </div>
+                <div class="product-info">
+                    <h3>Dragon Roll</h3>
+                    <p>Anguila, pepino, palta, cubierto de palta laminada y salsa unagi</p>
+                    <div class="product-footer">
+                        <span class="product-price">$11.990</span>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1534256958597-7fe685cbd745?w=500" alt="Sashimi Mixto">
+                </div>
+                <div class="product-info">
+                    <h3>Sashimi Mixto</h3>
+                    <p>15 cortes de salmón, atún y pulpo con salsa ponzu</p>
+                    <div class="product-footer">
+                        <span class="product-price">$14.990</span>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="carta.html" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                <i class="fas fa-utensils"></i> Ver Carta Completa
+            </a>
+        </div>
+    </section>
+
+    <!-- Locales -->
+    <section class="locales-section">
+        <h2 class="section-title">Nuestros Locales</h2>
+        <div class="locales-grid">
+            <div class="local-card">
+                <img src="https://tofuu.getjusto.com/orioneat-local/resized2/xZkEsefHNTXdAgGnT-800-x.webp" alt="Local Huechuraba">
+                <div class="local-info">
+                    <h3>Huechuraba</h3>
+                    <div class="local-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Avenida Pedro Fontova 7280, Local 115</span>
+                    </div>
+                    <div class="local-detail">
+                        <i class="fas fa-phone"></i>
+                        <span>+56 2 2244 7450</span>
+                    </div>
+                    <div class="local-detail">
+                        <i class="fas fa-clock"></i>
+                        <span>Lunes a Sábado: 13:00 - 23:30 hrs<br>Domingo: Cerrado</span>
+                    </div>
+                    <div class="local-detail">
+                        <i class="fas fa-utensils"></i>
+                        <span>Mesa, Delivery y Retiro</span>
+                    </div>
+                    <div class="local-actions">
+                        <a href="https://www.google.com/maps/search/?api=1&query=-33.3554455,-70.67141339999999" target="_blank" class="btn btn-outline">
+                            <i class="fas fa-map"></i> Ver Mapa
+                        </a>
+                        <a href="tel:+56222447450" class="btn btn-primary">
+                            <i class="fas fa-phone"></i> Llamar
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="local-card">
+                <img src="https://tofuu.getjusto.com/orioneat-local/resized2/tgjS8Ad3vaR3svqfs-800-x.webp" alt="Local Lo Barnechea">
+                <div class="local-info">
+                    <h3>Lo Barnechea - Los Trapenses</h3>
+                    <div class="local-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Camino Los Trapenses 3200</span>
+                    </div>
+                    <div class="local-detail">
+                        <i class="fas fa-clock"></i>
+                        <span>Lunes a Domingo: 13:00 - 23:30 hrs</span>
+                    </div>
+                    <div class="local-detail">
+                        <i class="fas fa-utensils"></i>
+                        <span>Mesa, Delivery y Retiro</span>
+                    </div>
+                    <div class="local-actions">
+                        <a href="https://www.google.com/maps/search/?api=1&query=-33.3468347,-70.5437146" target="_blank" class="btn btn-outline">
+                            <i class="fas fa-map"></i> Ver Mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://tofuu.getjusto.com/orioneat-local/resized2/mwEYQNaCSgfAn5px7-300-x.webp" alt="Hanoi Sushi">
+                <p>Premium Nikkei<br>Calidad, Originalidad, Sensaciones Inolvidables</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="carta.html">Carta</a></li>
+                    <li><a href="delivery.html">Zona de Reparto</a></li>
+                    <li><a href="locales.html">Locales</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="tel:+56222447450"><i class="fas fa-phone"></i> +56 2 2244 7450</a></li>
+                    <li><a href="https://wa.me/56222447450" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                    <li><a href="mailto:contacto@hanoisushi.cl"><i class="fas fa-envelope"></i> contacto@hanoisushi.cl</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/hanoisushicl/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/hanoisushi/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <ul style="margin-top: 1.5rem;">
+                    <li><a href="terminos.html">Términos y Condiciones</a></li>
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Hanoi Sushi. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/56222447450?text=Hola,%20quiero%20hacer%20un%20pedido" target="_blank" class="whatsapp-float" title="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Carrito Flotante Premium -->
+    <div class="float-cart" id="floatCartBtn" onclick="HanoiApp.renderCartModal(); HanoiApp.openModal('cartModal');" style="display:none;">
+        <div class="cart-icon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-badge cart-count">0</span>
+        </div>
+        <div class="cart-info">
+            <div class="cart-count-text"><span class="cart-count">0</span> productos</div>
+            <div class="cart-total">$0</div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MODALES PREMIUM - SISTEMA DE PEDIDOS
+         ========================================== -->
+
+    <!-- Modal: Carrito - Estilo BK/McD -->
+    <div class="modal-overlay" id="cartModal" style="display:none">
+        <div class="modal-content" style="max-width:450px;border-radius:20px;">
+            <div style="background:linear-gradient(135deg,#019389,#017a72);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;">
+                <h2 style="color:white;font-size:1.2rem;display:flex;align-items:center;gap:0.75rem;margin:0;"><i class="fas fa-shopping-bag"></i> Tu Pedido</h2>
+                <button onclick="HanoiApp.closeModal('cartModal')" style="width:36px;height:36px;border-radius:50%;border:none;background:rgba(255,255,255,0.2);color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" style="padding:1rem;">
+                <div class="cart-empty" id="emptyCart" style="text-align:center;padding:3rem 1rem;">
+                    <div style="width:100px;height:100px;background:linear-gradient(135deg,#e6f7f6,#d1fae5);border-radius:50%;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;"><i class="fas fa-shopping-bag" style="font-size:2.5rem;color:#019389;"></i></div>
+                    <h3 style="font-size:1.3rem;margin-bottom:0.5rem;">Tu carrito está vacío</h3>
+                    <p style="color:#666;margin-bottom:1.5rem;">¡Agrega algo delicioso!</p>
+                    <button onclick="HanoiApp.closeModal('cartModal'); window.location.href='carta.html';" style="background:linear-gradient(135deg,#019389,#017a72);color:white;border:none;padding:1rem 2rem;border-radius:50px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;"><i class="fas fa-utensils"></i> Ver Menú</button>
+                </div>
+                <div id="cartContent" style="display:none;">
+                    <div class="cart-items" id="cartItems" style="max-height:300px;overflow-y:auto;"></div>
+                </div>
+            </div>
+            <div class="cart-footer" id="cartFooter" style="display:none;padding:1.25rem;background:#f8f9fa;border-top:1px solid #e9ecef;">
+                <div style="background:white;border-radius:12px;padding:1rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                    <div style="display:flex;justify-content:space-between;padding:0.4rem 0;font-size:0.95rem;"><span>Subtotal</span><span id="cartSubtotal">$0</span></div>
+                    <div style="display:flex;justify-content:space-between;padding:0.4rem 0;font-size:0.85rem;color:#019389;"><span><i class="fas fa-truck" style="margin-right:0.5rem;"></i>Envío</span><span>Se calcula al pagar</span></div>
+                    <div style="display:flex;justify-content:space-between;padding:0.75rem 0 0;margin-top:0.5rem;border-top:2px dashed #e9ecef;font-size:1.2rem;font-weight:700;"><span>Total</span><span style="color:#019389;" id="cartTotal">$0</span></div>
+                </div>
+                <button onclick="HanoiApp.openCheckout()" style="width:100%;background:linear-gradient(135deg,#10b981,#059669);color:white;border:none;padding:1.1rem;border-radius:50px;font-size:1.1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.75rem;box-shadow:0 4px 15px rgba(16,185,129,0.3);margin-bottom:0.75rem;"><i class="fas fa-lock"></i> Pagar Ahora</button>
+                <button onclick="HanoiApp.closeModal('cartModal')" style="width:100%;background:white;color:#019389;border:2px solid #019389;padding:0.9rem;border-radius:50px;font-size:0.95rem;font-weight:600;cursor:pointer;"><i class="fas fa-plus"></i> Agregar más</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Producto -->
+    <div class="modal-overlay" id="productModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-header" style="position:absolute;top:0;right:0;left:0;background:transparent;border:none;padding:1rem;z-index:10;">
+                <span></span>
+                <button class="modal-close" onclick="HanoiApp.closeModal('productModal')" style="background:white;box-shadow:0 2px 10px rgba(0,0,0,0.2);"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" style="padding:0;max-height:90vh;">
+                <img src="" alt="" class="product-modal-image" id="productModalImage">
+                <div class="product-modal-content">
+                    <h2 class="product-modal-name" id="productModalName"></h2>
+                    <p class="product-modal-desc" id="productModalDesc"></p>
+                    <div class="product-modal-price" id="productModalPrice"></div>
+                    
+                    <div class="options-section">
+                        <div class="options-title"><i class="fas fa-plus-circle"></i> Agregar Salsas <span class="optional">(opcional)</span></div>
+                        <div id="salsasOptions"></div>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="HanoiApp.updateProductQty(-1)">−</button>
+                        <span class="qty" id="productQty">1</span>
+                        <button class="qty-btn" onclick="HanoiApp.updateProductQty(1)">+</button>
+                    </div>
+                    
+                    <div class="notes-section">
+                        <div class="options-title"><i class="fas fa-comment"></i> Notas especiales <span class="optional">(opcional)</span></div>
+                        <textarea id="productNotes" placeholder="Ej: Sin cebolla, extra salsa..."></textarea>
+                    </div>
+                    
+                    <button class="add-to-cart-btn" onclick="HanoiApp.addCurrentProductToCart()">
+                        <span class="btn-text"><i class="fas fa-cart-plus"></i> Agregar al Carrito</span>
+                        <span class="btn-price" id="addToCartTotal">$0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Checkout Premium -->
+    <div class="modal-overlay" id="checkoutModal" style="display:none">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2><i class="fas fa-credit-card"></i> Finalizar Pedido</h2>
+                <button class="modal-close" onclick="HanoiApp.closeModal('checkoutModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <!-- Progress Steps -->
+                <div class="checkout-progress">
+                    <div class="checkout-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Entrega</div>
+                    </div>
+                    <div class="checkout-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Pago</div>
+                    </div>
+                    <div class="checkout-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Confirmar</div>
+                    </div>
+                </div>
+
+                <!-- Tipo de Entrega -->
+                <div class="checkout-section active">
+                    <div class="checkout-section-header">
+                        <i class="fas fa-truck"></i>
+                        <h4>¿Cómo quieres recibir tu pedido?</h4>
+                    </div>
+                    <div class="checkout-section-body">
+                        <div class="delivery-options">
+                            <div class="delivery-option selected" data-type="delivery" onclick="HanoiApp.setDeliveryType('delivery')">
+                                <div class="option-icon"><i class="fas fa-motorcycle"></i></div>
+                                <div class="option-title">Delivery</div>
+                                <div class="option-desc">Lo llevamos a tu puerta</div>
+                                <div class="option-time"><i class="fas fa-clock"></i> 35-50 min</div>
+                            </div>
+                            <div class="delivery-option" data-type="pickup" onclick="HanoiApp.setDeliveryType('pickup')">
+                                <div class="option-icon"><i class="fas fa-store"></i></div>
+                                <div class="option-title">Retiro</div>
+                                <div class="option-desc">Recoge en local</div>
+                                <div class="option-time"><i class="fas fa-clock"></i> 20-30 min</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Dirección -->
+                        <div id="addressSection" style="margin-top:1.5rem;">
+                            <div class="form-group">
+                                <label><i class="fas fa-map-marker-alt"></i> Dirección de entrega <span class="required">*</span></label>
+                                <div class="input-icon">
+                                    <i class="fas fa-home"></i>
+                                    <input type="text" class="form-control" id="checkoutAddress" placeholder="Ej: Av. Pedro Fontova 7280, Depto 501">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Programar entrega -->
+                        <div class="schedule-options">
+                            <div class="schedule-option selected" data-schedule="asap" onclick="HanoiApp.setScheduleType('asap')">
+                                <i class="fas fa-bolt"></i>
+                                <div class="schedule-title">Lo antes posible</div>
+                                <div class="schedule-time">35-50 min</div>
+                            </div>
+                            <div class="schedule-option" data-schedule="scheduled" onclick="HanoiApp.setScheduleType('scheduled')">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div class="schedule-title">Programar</div>
+                                <div class="schedule-time">Elige hora</div>
+                            </div>
+                        </div>
+                        
+                        <div class="time-picker">
+                            <label style="font-weight:600;margin-bottom:0.5rem;display:block;">Selecciona la hora:</label>
+                            <div class="time-slots">
+                                <div class="time-slot" data-time="13:00" onclick="HanoiApp.setScheduledTime('13:00')">13:00</div>
+                                <div class="time-slot" data-time="14:00" onclick="HanoiApp.setScheduledTime('14:00')">14:00</div>
+                                <div class="time-slot" data-time="15:00" onclick="HanoiApp.setScheduledTime('15:00')">15:00</div>
+                                <div class="time-slot" data-time="16:00" onclick="HanoiApp.setScheduledTime('16:00')">16:00</div>
+                                <div class="time-slot" data-time="17:00" onclick="HanoiApp.setScheduledTime('17:00')">17:00</div>
+                                <div class="time-slot" data-time="18:00" onclick="HanoiApp.setScheduledTime('18:00')">18:00</div>
+                                <div class="time-slot" data-time="19:00" onclick="HanoiApp.setScheduledTime('19:00')">19:00</div>
+                                <div class="time-slot" data-time="20:00" onclick="HanoiApp.setScheduledTime('20:00')">20:00</div>
+                                <div class="time-slot" data-time="21:00" onclick="HanoiApp.setScheduledTime('21:00')">21:00</div>
+                                <div class="time-slot" data-time="22:00" onclick="HanoiApp.setScheduledTime('22:00')">22:00</div>
+                                <div class="time-slot" data-time="23:00" onclick="HanoiApp.setScheduledTime('23:00')">23:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Método de Pago -->
+                <div class="checkout-section">
+                    <div class="checkout-section-header">
+                        <i class="fas fa-credit-card"></i>
+                        <h4>Método de Pago</h4>
+                    </div>
+                    <div class="checkout-section-body">
+                        <div class="payment-methods">
+                            <div class="payment-method selected" data-method="webpay" onclick="HanoiApp.setPaymentMethod('webpay')">
+                                <div class="payment-icon"><i class="fas fa-credit-card"></i></div>
+                                <div class="payment-info">
+                                    <div class="payment-title">Webpay <span style="background:#10b981;color:white;padding:2px 8px;border-radius:10px;font-size:0.7rem;margin-left:5px;">Recomendado</span></div>
+                                    <div class="payment-desc">Paga seguro con tu tarjeta</div>
+                                    <div class="payment-logos">
+                                        <span class="payment-logo visa">VISA</span>
+                                        <span class="payment-logo mastercard">MC</span>
+                                        <span class="payment-logo amex">AMEX</span>
+                                        <span class="payment-logo webpay">WP</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="payment-method" data-method="efectivo" onclick="HanoiApp.setPaymentMethod('efectivo')">
+                                <div class="payment-icon"><i class="fas fa-money-bill-wave"></i></div>
+                                <div class="payment-info">
+                                    <div class="payment-title">Efectivo</div>
+                                    <div class="payment-desc">Paga al recibir tu pedido</div>
+                                </div>
+                            </div>
+                            <div class="payment-method" data-method="transferencia" onclick="HanoiApp.setPaymentMethod('transferencia')">
+                                <div class="payment-icon"><i class="fas fa-university"></i></div>
+                                <div class="payment-info">
+                                    <div class="payment-title">Transferencia</div>
+                                    <div class="payment-desc">Banco Estado, BCI, Santander...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Datos de Contacto -->
+                <div class="checkout-section">
+                    <div class="checkout-section-header">
+                        <i class="fas fa-user"></i>
+                        <h4>Datos de Contacto</h4>
+                    </div>
+                    <div class="checkout-section-body">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" id="checkoutName" placeholder="Tu nombre">
+                            </div>
+                            <div class="form-group">
+                                <label>Teléfono <span class="required">*</span></label>
+                                <input type="tel" class="form-control" id="checkoutPhone" placeholder="+56 9 1234 5678">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Notas para el pedido</label>
+                            <textarea class="form-control" id="checkoutNotes" placeholder="Instrucciones especiales, timbre, referencias..." style="height:80px;resize:none;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Propina -->
+                <div class="checkout-section">
+                    <div class="checkout-section-header">
+                        <i class="fas fa-heart"></i>
+                        <h4>¿Deseas agregar propina?</h4>
+                    </div>
+                    <div class="checkout-section-body">
+                        <div class="tip-selector">
+                            <div class="tip-option" data-tip="0" onclick="HanoiApp.setTip(0)">
+                                <div class="tip-percent">Sin propina</div>
+                            </div>
+                            <div class="tip-option" data-tip="5" onclick="HanoiApp.setTip(5)">
+                                <div class="tip-percent">5%</div>
+                                <div class="tip-amount">$0</div>
+                            </div>
+                            <div class="tip-option" data-tip="10" onclick="HanoiApp.setTip(10)">
+                                <div class="tip-percent">10%</div>
+                                <div class="tip-amount">$0</div>
+                            </div>
+                            <div class="tip-option" data-tip="15" onclick="HanoiApp.setTip(15)">
+                                <div class="tip-percent">15%</div>
+                                <div class="tip-amount">$0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumen del Pedido -->
+                <div class="order-summary">
+                    <div class="order-summary-title"><i class="fas fa-receipt"></i> Resumen del Pedido</div>
+                    
+                    <!-- Código promocional -->
+                    <div class="promo-code-section">
+                        <input type="text" id="promoCodeInput" placeholder="Código de descuento">
+                        <button onclick="HanoiApp.applyPromoCode()">Aplicar</button>
+                    </div>
+                    
+                    <div id="freeDeliveryMsg" style="display:none;background:#fef3c7;color:#92400e;padding:0.75rem;border-radius:8px;margin-bottom:1rem;font-size:0.85rem;"></div>
+                    
+                    <div class="order-items" id="checkoutItems"></div>
+                    
+                    <div class="order-totals">
+                        <div class="order-row"><span>Subtotal</span><span id="checkoutSubtotal">$0</span></div>
+                        <div class="order-row"><span>Delivery</span><span id="checkoutDelivery">$0</span></div>
+                        <div class="order-row discount" id="discountRow" style="display:none;"><span>Descuento</span><span id="checkoutDiscount">-$0</span></div>
+                        <div class="order-row" id="tipRow" style="display:none;"><span>Propina</span><span id="checkoutTip">$0</span></div>
+                        <div class="order-row total"><span>Total a Pagar</span><span class="price" id="checkoutTotal">$0</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-premium btn-success-premium" onclick="HanoiApp.confirmOrder()">
+                    <i class="fas fa-check-circle"></i> Confirmar Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Confirmación de Pedido -->
+    <div class="modal-overlay" id="confirmationModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="order-confirmation">
+                    <div class="confirmation-animation">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2 class="confirmation-title">¡Pedido Confirmado!</h2>
+                    <p class="confirmation-subtitle">Tu pedido está siendo preparado con mucho cariño 🍣</p>
+                    
+                    <div class="order-number-box">
+                        <div class="order-number-label">Número de pedido</div>
+                        <div class="order-number-value" id="orderNumber">HS-XXXXXX</div>
+                    </div>
+                    
+                    <div class="order-eta">
+                        <i class="fas fa-clock"></i>
+                        <div class="order-eta-text">
+                            <div class="order-eta-label">Tiempo estimado</div>
+                            <div class="order-eta-time" id="orderETA">35-50 min</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Order Tracking -->
+                    <div class="order-tracking">
+                        <div class="tracking-title"><i class="fas fa-route"></i> Seguimiento</div>
+                        <div class="tracking-steps">
+                            <div class="tracking-step active">
+                                <div class="tracking-icon"><i class="fas fa-check"></i></div>
+                                <div class="tracking-label">Confirmado</div>
+                            </div>
+                            <div class="tracking-step">
+                                <div class="tracking-icon"><i class="fas fa-utensils"></i></div>
+                                <div class="tracking-label">Preparando</div>
+                            </div>
+                            <div class="tracking-step">
+                                <div class="tracking-icon"><i class="fas fa-motorcycle"></i></div>
+                                <div class="tracking-label">En camino</div>
+                            </div>
+                            <div class="tracking-step">
+                                <div class="tracking-icon"><i class="fas fa-home"></i></div>
+                                <div class="tracking-label">Entregado</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                        <button class="btn-premium btn-success-premium" onclick="HanoiApp.sendOrderWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                        </button>
+                        <button class="btn-premium btn-outline-premium" onclick="HanoiApp.closeModal('confirmationModal')">
+                            <i class="fas fa-home"></i> Volver al Inicio
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Login/Registro - Estilo BK/McD con Google -->
+    <div class="modal-overlay" id="loginModal" style="display:none">
+        <div class="modal-content" style="max-width:400px;border-radius:24px;overflow:hidden;">
+            <button onclick="HanoiApp.closeModal('loginModal')" style="position:absolute;top:1rem;right:1rem;z-index:10;width:36px;height:36px;border-radius:50%;border:none;background:rgba(0,0,0,0.1);color:#333;cursor:pointer;display:flex;align-items:center;justify-content:center;"><i class="fas fa-times"></i></button>
+            
+            <div style="background:linear-gradient(135deg,#019389,#017a72);padding:2.5rem 2rem;text-align:center;">
+                <img src="https://tofuu.getjusto.com/orioneat-local/resized2/s84YdnWJtwcyS6PdE-300-x.webp" alt="Hanoi Sushi" style="height:60px;margin-bottom:1rem;">
+                <h2 style="color:white;font-size:1.5rem;margin:0 0 0.5rem;">¡Bienvenido!</h2>
+                <p style="color:rgba(255,255,255,0.9);font-size:0.95rem;margin:0;">Inicia sesión para pedir</p>
+            </div>
+            
+            <div style="padding:2rem;">
+                <!-- Botón Google -->
+                <button onclick="alert('Próximamente: Login con Google')" style="width:100%;display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:1rem;background:white;border:2px solid #e5e5e5;border-radius:50px;font-size:1rem;font-weight:600;cursor:pointer;margin-bottom:1rem;transition:all 0.3s;">
+                    <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    Continuar con Google
+                </button>
+                
+                <!-- Botón Facebook -->
+                <button onclick="alert('Próximamente: Login con Facebook')" style="width:100%;display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:1rem;background:#1877f2;border:none;border-radius:50px;font-size:1rem;font-weight:600;color:white;cursor:pointer;margin-bottom:1.5rem;">
+                    <i class="fab fa-facebook-f"></i> Continuar con Facebook
+                </button>
+                
+                <!-- Divisor -->
+                <div style="display:flex;align-items:center;margin:1.5rem 0;color:#999;font-size:0.85rem;">
+                    <div style="flex:1;height:1px;background:#e5e5e5;"></div>
+                    <span style="padding:0 1rem;">o usa tu email</span>
+                    <div style="flex:1;height:1px;background:#e5e5e5;"></div>
+                </div>
+                
+                <!-- Tabs -->
+                <div style="display:flex;background:#f5f5f5;border-radius:50px;padding:4px;margin-bottom:1.5rem;">
+                    <button class="auth-tab active" data-tab="login" onclick="switchAuthTab('login')" style="flex:1;padding:0.75rem;border:none;border-radius:50px;font-weight:600;cursor:pointer;transition:all 0.3s;background:white;color:#019389;">Ingresar</button>
+                    <button class="auth-tab" data-tab="register" onclick="switchAuthTab('register')" style="flex:1;padding:0.75rem;border:none;border-radius:50px;font-weight:600;cursor:pointer;transition:all 0.3s;background:transparent;color:#666;">Registrarse</button>
+                </div>
+                
+                <!-- Login Form -->
+                <div class="auth-content active" id="loginForm">
+                    <form onsubmit="handleLogin(event)">
+                        <div style="margin-bottom:1rem;">
+                            <input type="email" id="loginEmail" placeholder="Email" required style="width:100%;padding:1rem 1.25rem;border:2px solid #e5e5e5;border-radius:12px;font-size:1rem;transition:border-color 0.3s;box-sizing:border-box;">
+                        </div>
+                        <div style="margin-bottom:1.5rem;">
+                            <input type="password" id="loginPassword" placeholder="Contraseña" required style="width:100%;padding:1rem 1.25rem;border:2px solid #e5e5e5;border-radius:12px;font-size:1rem;transition:border-color 0.3s;box-sizing:border-box;">
+                        </div>
+                        <button type="submit" style="width:100%;padding:1rem;background:linear-gradient(135deg,#019389,#017a72);color:white;border:none;border-radius:50px;font-size:1.05rem;font-weight:700;cursor:pointer;">Iniciar Sesión</button>
+                        <p style="text-align:center;margin-top:1rem;font-size:0.85rem;color:#666;">¿Olvidaste tu contraseña? <a href="#" style="color:#019389;text-decoration:none;font-weight:600;">Recuperar</a></p>
+                    </form>
+                </div>
+                
+                <!-- Register Form -->
+                <div class="auth-content" id="registerForm" style="display:none;">
+                    <form onsubmit="handleRegister(event)">
+                        <div style="margin-bottom:1rem;">
+                            <input type="text" id="regName" placeholder="Nombre completo" required style="width:100%;padding:1rem 1.25rem;border:2px solid #e5e5e5;border-radius:12px;font-size:1rem;box-sizing:border-box;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <input type="email" id="regEmail" placeholder="Email" required style="width:100%;padding:1rem 1.25rem;border:2px solid #e5e5e5;border-radius:12px;font-size:1rem;box-sizing:border-box;">
+                        </div>
+                        <div style="margin-bottom:1rem;">
+                            <input type="tel" id="regPhone" placeholder="Teléfono (+56 9 1234 5678)" required style="width:100%;padding:1rem 1.25rem;border:2px solid #e5e5e5;border-radius:12px;font-size:1rem;box-sizing:border-box;">
+                        </div>
+                        <div style="margin-bottom:1.5rem;">
+                            <input type="password" id="regPassword" placeholder="Contraseña (mín. 6 caracteres)" required minlength="6" style="width:100%;padding:1rem 1.25rem;border:2px solid #e5e5e5;border-radius:12px;font-size:1rem;box-sizing:border-box;">
+                        </div>
+                        <button type="submit" style="width:100%;padding:1rem;background:linear-gradient(135deg,#019389,#017a72);color:white;border:none;border-radius:50px;font-size:1.05rem;font-weight:700;cursor:pointer;">Crear Cuenta</button>
+                    </form>
+                </div>
+                
+                <p style="text-align:center;margin-top:1.5rem;font-size:0.8rem;color:#999;">Al continuar, aceptas nuestros <a href="#" style="color:#019389;">Términos</a> y <a href="#" style="color:#019389;">Privacidad</a></p>
+                <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                    <button onclick="window.location.href='mis-pedidos.html'" style="width:100%;padding:1rem;background:white;border:2px solid #e5e5e5;border-radius:12px;font-size:0.95rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:0.75rem;"><i class="fas fa-history" style="color:#019389;"></i> Mis Pedidos</button>
+                    <button onclick="HanoiApp.closeModal('profileModal')" style="width:100%;padding:1rem;background:white;border:2px solid #e5e5e5;border-radius:12px;font-size:0.95rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:0.75rem;"><i class="fas fa-map-marker-alt" style="color:#019389;"></i> Mis Direcciones</button>
+                    <button onclick="HanoiApp.logout(); HanoiApp.closeModal('profileModal');" style="width:100%;padding:1rem;background:#fee2e2;border:none;border-radius:12px;font-size:0.95rem;font-weight:600;color:#dc2626;cursor:pointer;display:flex;align-items:center;gap:0.75rem;justify-content:center;"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+        
+        // Hero Slider
+        const heroSlider = document.getElementById('heroSlider');
+        const heroDots = document.querySelectorAll('.hero-dot');
+        let currentSlide = 0;
+        const totalSlides = 3;
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            heroSlider.style.transform = `translateX(-${index * 100}%)`;
+            heroDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+        
+        heroDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                goToSlide(parseInt(dot.dataset.slide));
+            });
+        });
+        
+        // Auto slide
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }, 5000);
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+    <script src="js/odoo-integration.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+import{j as e,r as t}from"./jsx-runtime-BGxL3LVy.js";import{i}from"./env-D6s-xqZ4.js";import{u as l}from"./useHydrated-DGqRnkd3.js";function f(r){const a=l();return i||!a||r.forceFallback?e.jsx(e.Fragment,{children:r.fallback}):e.jsx(t.Suspense,{fallback:r.fallback,children:r.children})}export{f as C};

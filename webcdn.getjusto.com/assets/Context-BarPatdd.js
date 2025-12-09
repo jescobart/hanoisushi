@@ -1,0 +1,1 @@
+import{r as t}from"./jsx-runtime-BGxL3LVy.js";function r(n){return{open:n.open,onOpenChange:n.onOpenChange}}const e=t.createContext(null);function o(){return t.useContext(e)}function s(){return!!o()}export{e as M,o as a,s as b,r as u};

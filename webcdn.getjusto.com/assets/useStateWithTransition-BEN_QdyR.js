@@ -1,0 +1,1 @@
+import{r as s}from"./jsx-runtime-BGxL3LVy.js";function o(t){const[e,a]=s.useState(t);return[e,n=>{s.startTransition(()=>{a(n)})}]}function u(t){const[e,a]=s.useState(t);return s.useEffect(()=>{s.startTransition(()=>{a(t)})},[t]),e}export{o as a,u};

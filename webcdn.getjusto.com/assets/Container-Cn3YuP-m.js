@@ -1,0 +1,1 @@
+import{j as m}from"./jsx-runtime-BGxL3LVy.js";import{c as n}from"./utils-mMyIM9tf.js";function x(s){const a=n("max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8",s.className);return m.jsx("div",{className:a,children:s.children})}export{x as C};

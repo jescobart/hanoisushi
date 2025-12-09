@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zona de Reparto - HANOI SUSHI</title>
+    <meta name="description" content="Conoce nuestra zona de cobertura de delivery. Hanoi Sushi entrega en Huechuraba, Lo Barnechea y comunas cercanas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #019389;
+            --primary-dark: #017a72;
+            --secondary: #f5f5f5;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #fff;
+            --border: #e5e5e5;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lato', sans-serif; color: var(--text-dark); line-height: 1.6; }
+        
+        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+        .logo img { height: 50px; }
+        nav { display: flex; align-items: center; gap: 2rem; }
+        .nav-links { display: flex; list-style: none; gap: 1.5rem; }
+        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s; border: none; font-size: 0.9rem; }
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-dark); }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+        .header-actions { display: flex; align-items: center; gap: 1rem; }
+        
+        .page-header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: var(--white); padding: 4rem 1rem; text-align: center; }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .page-header p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        
+        .main-content { max-width: 1200px; margin: 0 auto; padding: 3rem 1rem; }
+        
+        .delivery-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .info-card { background: var(--white); border-radius: 16px; padding: 2rem; box-shadow: var(--shadow); text-align: center; }
+        .info-card i { font-size: 3rem; color: var(--primary); margin-bottom: 1rem; }
+        .info-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .info-card p { color: var(--text-light); }
+        
+        .zones-section { margin-bottom: 3rem; }
+        .zones-section h2 { font-size: 2rem; text-align: center; margin-bottom: 2rem; }
+        
+        .zones-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .zone-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: all 0.3s; }
+        .zone-card:hover { border-color: var(--primary); box-shadow: var(--shadow); }
+        .zone-card h4 { color: var(--primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .zone-card ul { list-style: none; color: var(--text-light); }
+        .zone-card ul li { padding: 0.25rem 0; }
+        .zone-card ul li::before { content: "✓"; color: var(--primary); margin-right: 0.5rem; }
+        
+        .map-section { background: var(--secondary); border-radius: 16px; padding: 2rem; text-align: center; }
+        .map-section h2 { margin-bottom: 1.5rem; }
+        .map-container { border-radius: 12px; overflow: hidden; height: 400px; }
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
+        
+        .cta-section { background: var(--primary); color: var(--white); padding: 3rem; border-radius: 16px; text-align: center; margin-top: 3rem; }
+        .cta-section h2 { margin-bottom: 1rem; }
+        .cta-section p { margin-bottom: 1.5rem; opacity: 0.9; }
+        .cta-section .btn { background: var(--white); color: var(--primary); }
+        .cta-section .btn:hover { background: var(--secondary); }
+        
+        footer { background: #1a1a1a; color: var(--white); padding: 3rem 1rem 1.5rem; margin-top: 3rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+        .footer-section h4 { color: var(--primary); margin-bottom: 1rem; }
+        .footer-section a { color: #ccc; text-decoration: none; display: block; margin-bottom: 0.5rem; }
+        .footer-section a:hover { color: var(--primary); }
+        .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid #333; text-align: center; color: #888; }
+        
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        
+        @media (max-width: 768px) {
+            .nav-links, .header-actions .btn-outline { display: none; }
+            .mobile-menu-btn { display: block; }
+            .page-header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo"><img src="https://tofuu.getjusto.com/orioneat-local/resized2/s84YdnWJtwcyS6PdE-300-x.webp" alt="Hanoi Sushi"></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="carta.html">Carta</a></li>
+                    <li><a href="delivery.html" class="active">Zona de Reparto</a></li>
+                    <li><a href="locales.html">Locales</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="https://wa.me/56222447450" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="carta.html" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Pedir</a>
+            </div>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <h1>Zona de Reparto</h1>
+        <p>Conoce nuestra cobertura de delivery y disfruta Hanoi Sushi en la comodidad de tu hogar</p>
+    </section>
+
+    <main class="main-content">
+        <div class="delivery-info">
+            <div class="info-card">
+                <i class="fas fa-clock"></i>
+                <h3>Horario de Delivery</h3>
+                <p>Lunes a Sábado: 13:00 - 23:00 hrs<br>Domingo: Cerrado</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-motorcycle"></i>
+                <h3>Tiempo de Entrega</h3>
+                <p>30 - 45 minutos aproximadamente<br>según zona de cobertura</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Costo de Envío</h3>
+                <p>Desde $1.990<br>Gratis sobre $25.000</p>
+            </div>
+        </div>
+
+        <section class="zones-section">
+            <h2>Zonas de Cobertura</h2>
+            <div class="zones-grid">
+                <div class="zone-card">
+                    <h4><i class="fas fa-map-marker-alt"></i> Local Huechuraba</h4>
+                    <ul>
+                        <li>Huechuraba</li>
+                        <li>Conchalí</li>
+                        <li>Recoleta (sector norte)</li>
+                        <li>Quilicura (sector sur)</li>
+                        <li>Independencia</li>
+                    </ul>
+                </div>
+                <div class="zone-card">
+                    <h4><i class="fas fa-map-marker-alt"></i> Local Los Trapenses</h4>
+                    <ul>
+                        <li>Lo Barnechea</li>
+                        <li>Las Condes (sector oriente)</li>
+                        <li>Vitacura (sector norte)</li>
+                        <li>La Dehesa</li>
+                    </ul>
+                </div>
+                <div class="zone-card">
+                    <h4><i class="fas fa-info-circle"></i> Información</h4>
+                    <ul>
+                        <li>Pedido mínimo: $8.000</li>
+                        <li>Pago con tarjeta o efectivo</li>
+                        <li>Transferencia bancaria</li>
+                        <li>Retiro en local disponible</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <h2>Ubicación de Nuestros Locales</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.8!2d-70.6714!3d-33.3554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDIxJzE5LjYiUyA3MMKwNDAnMTcuMSJX!5e0!3m2!1ses!2scl!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>¿Listo para pedir?</h2>
+            <p>Haz tu pedido ahora y recíbelo en la puerta de tu casa</p>
+            <a href="carta.html" class="btn"><i class="fas fa-utensils"></i> Ver Carta y Pedir</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <img src="https://tofuu.getjusto.com/orioneat-local/resized2/mwEYQNaCSgfAn5px7-300-x.webp" alt="Hanoi Sushi" style="height:60px;">
+            </div>
+            <div class="footer-section">
+                <h4>Navegación</h4>
+                <a href="index.html">Inicio</a>
+                <a href="carta.html">Carta</a>
+                <a href="locales.html">Locales</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <a href="tel:+56222447450"><i class="fas fa-phone"></i> +56 2 2244 7450</a>
+                <a href="https://wa.me/56222447450"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <a href="https://www.instagram.com/hanoisushicl/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.facebook.com/hanoisushi/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Hanoi Sushi. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/56222447450?text=Hola,%20quiero%20hacer%20un%20pedido" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+</body>
+</html>

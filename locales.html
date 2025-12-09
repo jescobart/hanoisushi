@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Locales - HANOI SUSHI</title>
+    <meta name="description" content="Visítanos en nuestros locales de Huechuraba y Lo Barnechea. Hanoi Sushi Premium Nikkei.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #019389; --primary-dark: #017a72; --primary-light: #e6f7f6; --secondary: #f5f5f5; --text-dark: #333; --text-light: #666; --white: #fff; --border: #e5e5e5; --shadow: 0 2px 10px rgba(0,0,0,0.1); --shadow-lg: 0 10px 40px rgba(0,0,0,0.15); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lato', sans-serif; color: var(--text-dark); line-height: 1.6; }
+        
+        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+        .logo img { height: 50px; }
+        .nav-links { display: flex; list-style: none; gap: 1.5rem; }
+        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s; border: none; font-size: 0.9rem; cursor: pointer; }
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text-dark); }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+        .header-actions { display: flex; align-items: center; gap: 1rem; }
+        
+        /* Hero Section Premium */
+        .hero-locales { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: var(--white); padding: 5rem 1rem; text-align: center; position: relative; overflow: hidden; }
+        .hero-locales::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1600') center/cover; opacity: 0.15; }
+        .hero-locales .content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .hero-locales h1 { font-size: 3rem; font-weight: 900; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .hero-locales p { font-size: 1.3rem; opacity: 0.95; margin-bottom: 2rem; }
+        .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .hero-stat { text-align: center; }
+        .hero-stat .number { font-size: 2.5rem; font-weight: 900; display: block; }
+        .hero-stat .label { font-size: 0.9rem; opacity: 0.8; }
+        
+        .main-content { max-width: 1200px; margin: 0 auto; padding: 3rem 1rem; }
+        
+        /* Selector de Local */
+        .local-selector { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .local-tab { padding: 1rem 2rem; background: var(--white); border: 2px solid var(--border); border-radius: 50px; cursor: pointer; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; gap: 0.75rem; }
+        .local-tab:hover { border-color: var(--primary); }
+        .local-tab.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
+        .local-tab i { font-size: 1.2rem; }
+</style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo"><img src="https://tofuu.getjusto.com/orioneat-local/resized2/s84YdnWJtwcyS6PdE-300-x.webp" alt="Hanoi Sushi"></a>
+            <nav><ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="carta.html">Carta</a></li>
+                <li><a href="delivery.html">Zona de Reparto</a></li>
+                <li><a href="locales.html" class="active">Locales</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul></nav>
+            <div class="header-actions">
+                <a href="https://wa.me/56222447450" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="carta.html" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Pedir</a>
+            </div>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-locales">
+        <div class="content">
+            <h1><i class="fas fa-store"></i> Nuestros Locales</h1>
+            <p>Vive la experiencia Hanoi Sushi en persona. Ambiente premium, sabores únicos.</p>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="number">2</span><span class="label">Locales</span></div>
+                <div class="hero-stat"><span class="number">+5</span><span class="label">Años de experiencia</span></div>
+                <div class="hero-stat"><span class="number">⭐ 4.8</span><span class="label">Calificación</span></div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <!-- Selector de Locales -->
+        <div class="local-selector">
+            <div class="local-tab active" onclick="showLocal('huechuraba')">
+                <i class="fas fa-map-marker-alt"></i> Huechuraba
+            </div>
+            <div class="local-tab" onclick="showLocal('trapenses')">
+                <i class="fas fa-map-marker-alt"></i> Lo Barnechea - Los Trapenses
+            </div>
+        </div>
+
+        <!-- Local Huechuraba -->
+        <div class="local-detail" id="local-huechuraba">
+            <div class="local-grid">
+                <div class="local-gallery">
+                    <div class="gallery-main">
+                        <img src="https://tofuu.getjusto.com/orioneat-local/resized2/xZkEsefHNTXdAgGnT-800-x.webp" alt="Local Huechuraba" id="mainImg1">
+                    </div>
+                    <div class="gallery-thumbs">
+                        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=200" alt="Interior" onclick="changeImg(this, 'mainImg1')">
+                        <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=200" alt="Platos" onclick="changeImg(this, 'mainImg1')">
+                        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=200" alt="Ambiente" onclick="changeImg(this, 'mainImg1')">
+                    </div>
+                </div>
+                <div class="local-info-card">
+                    <div class="local-badge">Local Principal</div>
+                    <h2>Huechuraba</h2>
+                    <p class="local-desc">Nuestro local insignia ubicado en el corazón de Huechuraba. Ambiente acogedor y moderno para disfrutar la mejor cocina Nikkei.</p>
+                    
+                    <div class="info-items">
+                        <div class="info-item"><i class="fas fa-map-marker-alt"></i><div><strong>Dirección</strong><span>Av. Pedro Fontova 7280, Local 115</span></div></div>
+                        <div class="info-item"><i class="fas fa-phone"></i><div><strong>Teléfono</strong><span>+56 2 2244 7450</span></div></div>
+                        <div class="info-item"><i class="fas fa-clock"></i><div><strong>Horario</strong><span>Lun-Sáb: 13:00 - 23:30<br>Domingo: Cerrado</span></div></div>
+                    </div>
+                    
+                    <div class="services-grid">
+                        <div class="service-item"><i class="fas fa-utensils"></i><span>Mesa</span></div>
+                        <div class="service-item"><i class="fas fa-motorcycle"></i><span>Delivery</span></div>
+                        <div class="service-item"><i class="fas fa-shopping-bag"></i><span>Retiro</span></div>
+                        <div class="service-item"><i class="fas fa-wifi"></i><span>WiFi</span></div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <a href="tel:+56222447450" class="btn btn-primary btn-lg"><i class="fas fa-phone"></i> Llamar</a>
+                        <a href="https://wa.me/56222447450?text=Hola, quiero hacer una reserva en Huechuraba" target="_blank" class="btn btn-whatsapp btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://www.google.com/maps/dir//-33.3554455,-70.6714134" target="_blank" class="btn btn-outline btn-lg"><i class="fas fa-directions"></i> Cómo llegar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.5!2d-70.6714134!3d-33.3554455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDIxJzE5LjYiUyA3MMKwNDAnMTcuMSJX!5e0!3m2!1ses!2scl!4v1" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <!-- Local Los Trapenses -->
+        <div class="local-detail" id="local-trapenses" style="display:none;">
+            <div class="local-grid">
+                <div class="local-gallery">
+                    <div class="gallery-main">
+                        <img src="https://tofuu.getjusto.com/orioneat-local/resized2/tgjS8Ad3vaR3svqfs-800-x.webp" alt="Local Los Trapenses" id="mainImg2">
+                    </div>
+                    <div class="gallery-thumbs">
+                        <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=200" alt="Interior" onclick="changeImg(this, 'mainImg2')">
+                        <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=200" alt="Platos" onclick="changeImg(this, 'mainImg2')">
+                        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=200" alt="Ambiente" onclick="changeImg(this, 'mainImg2')">
+                    </div>
+                </div>
+                <div class="local-info-card">
+                    <div class="local-badge new">Nuevo Local</div>
+                    <h2>Lo Barnechea - Los Trapenses</h2>
+                    <p class="local-desc">Nuestro nuevo local en la exclusiva zona de Los Trapenses. Disfruta de un ambiente único con vista a la cordillera.</p>
+                    
+                    <div class="info-items">
+                        <div class="info-item"><i class="fas fa-map-marker-alt"></i><div><strong>Dirección</strong><span>Camino Los Trapenses 3200</span></div></div>
+                        <div class="info-item"><i class="fas fa-clock"></i><div><strong>Horario</strong><span>Lun-Dom: 13:00 - 23:30</span></div></div>
+                    </div>
+                    
+                    <div class="services-grid">
+                        <div class="service-item"><i class="fas fa-utensils"></i><span>Mesa</span></div>
+                        <div class="service-item"><i class="fas fa-motorcycle"></i><span>Delivery</span></div>
+                        <div class="service-item"><i class="fas fa-shopping-bag"></i><span>Retiro</span></div>
+                        <div class="service-item"><i class="fas fa-mountain"></i><span>Vista</span></div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <a href="https://wa.me/56222447450?text=Hola, quiero hacer una reserva en Los Trapenses" target="_blank" class="btn btn-whatsapp btn-lg"><i class="fab fa-whatsapp"></i> Reservar por WhatsApp</a>
+                        <a href="https://www.google.com/maps/dir//-33.3468347,-70.5437146" target="_blank" class="btn btn-outline btn-lg"><i class="fas fa-directions"></i> Cómo llegar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.5!2d-70.5437146!3d-33.3468347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDIwJzQ4LjYiUyA3MMKwMzInMzcuNCJX!5e0!3m2!1ses!2scl!4v1" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>¿Prefieres pedir desde casa?</h2>
+                <p>Disfruta nuestros platos sin salir. Delivery rápido y seguro.</p>
+                <a href="carta.html" class="btn btn-primary btn-xl"><i class="fas fa-shopping-bag"></i> Pedir Ahora</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div><img src="https://tofuu.getjusto.com/orioneat-local/resized2/mwEYQNaCSgfAn5px7-300-x.webp" alt="Hanoi Sushi" style="height:60px;"></div>
+            <div class="footer-section"><h4>Navegación</h4><a href="index.html">Inicio</a><a href="carta.html">Carta</a><a href="delivery.html">Delivery</a></div>
+            <div class="footer-section"><h4>Contacto</h4><a href="tel:+56222447450"><i class="fas fa-phone"></i> +56 2 2244 7450</a><a href="https://wa.me/56222447450"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+            <div class="footer-section"><h4>Síguenos</h4><a href="https://www.instagram.com/hanoisushicl/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><a href="https://www.facebook.com/hanoisushi/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Hanoi Sushi. Todos los derechos reservados.</p></div>
+    </footer>
+
+    <a href="https://wa.me/56222447450?text=Hola,%20quiero%20hacer%20una%20reserva" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+    <style>
+        /* Estilos adicionales para locales */
+        .local-detail { margin-bottom: 3rem; }
+        .local-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        
+        .local-gallery { border-radius: 20px; overflow: hidden; }
+        .gallery-main { height: 350px; overflow: hidden; border-radius: 20px; margin-bottom: 1rem; }
+        .gallery-main img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .gallery-main:hover img { transform: scale(1.05); }
+        .gallery-thumbs { display: flex; gap: 0.75rem; }
+        .gallery-thumbs img { width: 80px; height: 60px; object-fit: cover; border-radius: 10px; cursor: pointer; opacity: 0.7; transition: all 0.3s; border: 3px solid transparent; }
+        .gallery-thumbs img:hover { opacity: 1; border-color: var(--primary); }
+        
+        .local-info-card { background: var(--white); border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-lg); }
+        .local-badge { display: inline-block; background: var(--primary); color: var(--white); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        .local-badge.new { background: linear-gradient(135deg, #ff6b6b, #ee5a5a); }
+        .local-info-card h2 { font-size: 1.8rem; margin-bottom: 0.75rem; color: var(--text-dark); }
+        .local-desc { color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.7; }
+        
+        .info-items { margin-bottom: 1.5rem; }
+        .info-item { display: flex; align-items: flex-start; gap: 1rem; padding: 0.75rem; background: var(--secondary); border-radius: 12px; margin-bottom: 0.75rem; }
+        .info-item i { color: var(--primary); font-size: 1.2rem; width: 24px; margin-top: 3px; }
+        .info-item div { flex: 1; }
+        .info-item strong { display: block; font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.2rem; }
+        .info-item span { font-weight: 500; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
+        .service-item { text-align: center; padding: 1rem 0.5rem; background: var(--primary-light); border-radius: 12px; }
+        .service-item i { font-size: 1.3rem; color: var(--primary); display: block; margin-bottom: 0.5rem; }
+        .service-item span { font-size: 0.8rem; font-weight: 600; color: var(--primary-dark); }
+        
+        .action-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .btn-lg { padding: 0.9rem 1.5rem; font-size: 0.95rem; }
+        .btn-xl { padding: 1.1rem 2.5rem; font-size: 1.1rem; }
+        .btn-whatsapp { background: #25d366; color: var(--white); }
+        .btn-whatsapp:hover { background: #1da851; }
+        
+        .map-container { border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
+        .map-container iframe { width: 100%; height: 350px; border: 0; }
+        
+        .cta-section { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 24px; padding: 3rem; text-align: center; color: var(--white); margin-top: 3rem; }
+        .cta-section h2 { font-size: 2rem; margin-bottom: 0.75rem; }
+        .cta-section p { opacity: 0.9; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .cta-section .btn-primary { background: var(--white); color: var(--primary); }
+        .cta-section .btn-primary:hover { background: var(--secondary); }
+        
+        footer { background: #1a1a1a; color: var(--white); padding: 3rem 1rem 1.5rem; margin-top: 3rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+        .footer-section h4 { color: var(--primary); margin-bottom: 1rem; }
+        .footer-section a { color: #ccc; text-decoration: none; display: block; margin-bottom: 0.5rem; }
+        .footer-section a:hover { color: var(--primary); }
+        .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid #333; text-align: center; color: #888; }
+        
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        
+        @media (max-width: 768px) {
+            .nav-links, .header-actions .btn-outline { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero-locales h1 { font-size: 2rem; }
+            .hero-stats { gap: 1.5rem; }
+            .local-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .local-selector { flex-direction: column; }
+            .local-tab { justify-content: center; }
+        }
+    </style>
+
+    <script>
+        function showLocal(local) {
+            document.querySelectorAll('.local-detail').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.local-tab').forEach(el => el.classList.remove('active'));
+            document.getElementById('local-' + local).style.display = 'block';
+            event.target.closest('.local-tab').classList.add('active');
+        }
+        
+        function changeImg(thumb, mainId) {
+            document.getElementById(mainId).src = thumb.src.replace('w=200', 'w=800');
+            thumb.parentElement.querySelectorAll('img').forEach(img => img.style.opacity = '0.7');
+            thumb.style.opacity = '1';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+import{r as u}from"./jsx-runtime-BGxL3LVy.js";import{u as n}from"./useHydrated-DGqRnkd3.js";import{u as a}from"./Context-BxTGfssI.js";function f(r,o=[]){const e=a(),t=n();return u.useEffect(()=>{if(!t)return;const s=setTimeout(()=>{r(e)},500);return()=>clearTimeout(s)},[...o,t]),null}export{f as u};

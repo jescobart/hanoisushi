@@ -1,0 +1,1 @@
+function d(t,r,a,h){try{const s=n(a-t),c=n(h-r),o=Math.sin(s/2)*Math.sin(s/2)+Math.cos(n(t))*Math.cos(n(a))*Math.sin(c/2)*Math.sin(c/2),M=6371*(2*Math.atan2(Math.sqrt(o),Math.sqrt(1-o)));return Math.round(M*10)/10}catch{return 1e3}}function n(t){return t*(Math.PI/180)}export{d as g};

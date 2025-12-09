@@ -1,0 +1,1 @@
+import{e as i}from"./apollo-hooks.es-DZ97-Of4.js";import{i as t,_ as f,a as n}from"./index-Dg1ijqza.js";var l=i,_=t,m=f,p=n;function u(s,e,r){if(!p(r))return!1;var a=typeof e;return(a=="number"?_(r)&&m(e,r.length):a=="string"&&e in r)?l(r[e],s):!1}var o=u;export{o as _};

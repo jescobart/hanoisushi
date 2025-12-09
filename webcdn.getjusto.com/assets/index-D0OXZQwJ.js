@@ -1,0 +1,1 @@
+import{j as e,r as s}from"./jsx-runtime-BGxL3LVy.js";import{S as n}from"./index-B7S20zKg.js";function a(r){return e.jsx(s.Suspense,{fallback:e.jsx("div",{className:"flex-1 flex items-center justify-center",children:e.jsx(n,{})}),children:r.children})}export{a as S};

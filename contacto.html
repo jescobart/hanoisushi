@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - HANOI SUSHI</title>
+    <meta name="description" content="Contáctanos para reservas, pedidos o consultas. Hanoi Sushi Premium Nikkei.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #019389; --primary-dark: #017a72; --secondary: #f5f5f5; --text-dark: #333; --text-light: #666; --white: #fff; --border: #e5e5e5; --shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lato', sans-serif; color: var(--text-dark); line-height: 1.6; }
+        
+        header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; }
+        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+        .logo img { height: 50px; }
+        .nav-links { display: flex; list-style: none; gap: 1.5rem; }
+        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s; border: none; font-size: 0.9rem; cursor: pointer; }
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-dark); }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+        .header-actions { display: flex; align-items: center; gap: 1rem; }
+        
+        .page-header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: var(--white); padding: 4rem 1rem; text-align: center; }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .page-header p { font-size: 1.2rem; opacity: 0.9; }
+        
+        .main-content { max-width: 1200px; margin: 0 auto; padding: 3rem 1rem; }
+        
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        
+        .contact-info h2 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary); }
+        .contact-info p { color: var(--text-light); margin-bottom: 2rem; }
+        
+        .info-items { margin-bottom: 2rem; }
+        .info-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; padding: 1rem; background: var(--secondary); border-radius: 12px; transition: all 0.3s; }
+        .info-item:hover { box-shadow: var(--shadow); }
+        .info-item i { font-size: 1.5rem; color: var(--primary); width: 40px; height: 40px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .info-item .info-text h4 { font-size: 1rem; margin-bottom: 0.25rem; }
+        .info-item .info-text p { margin: 0; color: var(--text-light); }
+        .info-item .info-text a { color: var(--primary); text-decoration: none; }
+        .info-item .info-text a:hover { text-decoration: underline; }
+        
+        .social-section h3 { font-size: 1.2rem; margin-bottom: 1rem; }
+        .social-links { display: flex; gap: 1rem; }
+        .social-links a { width: 50px; height: 50px; border-radius: 50%; background: var(--secondary); display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.3rem; transition: all 0.3s; text-decoration: none; }
+        .social-links a:hover { background: var(--primary); color: var(--white); }
+        .social-links a.instagram:hover { background: #E4405F; }
+        .social-links a.facebook:hover { background: #1877F2; }
+        .social-links a.whatsapp:hover { background: #25D366; }
+        
+        .contact-form { background: var(--white); padding: 2rem; border-radius: 20px; box-shadow: var(--shadow); }
+        .contact-form h2 { font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center; }
+        
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-dark); }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.875rem 1rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem; font-family: inherit; transition: border-color 0.3s; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        
+        .submit-btn { width: 100%; padding: 1rem; font-size: 1.1rem; }
+        
+        .success-message { display: none; text-align: center; padding: 2rem; }
+        .success-message i { font-size: 4rem; color: var(--primary); margin-bottom: 1rem; }
+        .success-message h3 { margin-bottom: 0.5rem; }
+        
+        footer { background: #1a1a1a; color: var(--white); padding: 3rem 1rem 1.5rem; margin-top: 3rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+        .footer-section h4 { color: var(--primary); margin-bottom: 1rem; }
+        .footer-section a { color: #ccc; text-decoration: none; display: block; margin-bottom: 0.5rem; }
+        .footer-section a:hover { color: var(--primary); }
+        .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid #333; text-align: center; color: #888; }
+        
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        
+        @media (max-width: 768px) {
+            .nav-links, .header-actions .btn-outline { display: none; }
+            .mobile-menu-btn { display: block; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo"><img src="https://tofuu.getjusto.com/orioneat-local/resized2/s84YdnWJtwcyS6PdE-300-x.webp" alt="Hanoi Sushi"></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="carta.html">Carta</a></li>
+                    <li><a href="delivery.html">Zona de Reparto</a></li>
+                    <li><a href="locales.html">Locales</a></li>
+                    <li><a href="contacto.html" class="active">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="https://wa.me/56222447450" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="carta.html" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Pedir</a>
+            </div>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <h1>Contáctanos</h1>
+        <p>Estamos aquí para ayudarte con reservas, pedidos o cualquier consulta</p>
+    </section>
+
+    <main class="main-content">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>¿Podemos ayudarte?</h2>
+                <p>Escríbenos si tienes alguna duda, quieres hacer una reserva o necesitas información sobre nuestros servicios.</p>
+                
+                <div class="info-items">
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="info-text">
+                            <h4>Teléfono</h4>
+                            <p><a href="tel:+56222447450">+56 2 2244 7450</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="info-text">
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/56222447450" target="_blank">+56 2 2244 7450</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <p><a href="mailto:contacto@hanoisushi.cl">contacto@hanoisushi.cl</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="info-text">
+                            <h4>Horario de Atención</h4>
+                            <p>Lunes a Sábado: 13:00 - 23:30 hrs</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-section">
+                    <h3>Síguenos en redes sociales</h3>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/hanoisushicl/" target="_blank" class="instagram" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/hanoisushi/" target="_blank" class="facebook" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://wa.me/56222447450" target="_blank" class="whatsapp" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Envíanos un mensaje</h2>
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="+56 9 1234 5678">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <select id="asunto" name="asunto" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="reserva">Reserva de mesa</option>
+                            <option value="pedido">Consulta sobre pedido</option>
+                            <option value="evento">Evento o catering</option>
+                            <option value="reclamo">Reclamo o sugerencia</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                    </button>
+                </form>
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>¡Mensaje enviado!</h3>
+                    <p>Nos pondremos en contacto contigo pronto.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div><img src="https://tofuu.getjusto.com/orioneat-local/resized2/mwEYQNaCSgfAn5px7-300-x.webp" alt="Hanoi Sushi" style="height:60px;"></div>
+            <div class="footer-section">
+                <h4>Navegación</h4>
+                <a href="index.html">Inicio</a>
+                <a href="carta.html">Carta</a>
+                <a href="locales.html">Locales</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <a href="tel:+56222447450"><i class="fas fa-phone"></i> +56 2 2244 7450</a>
+                <a href="https://wa.me/56222447450"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <a href="https://www.instagram.com/hanoisushicl/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.facebook.com/hanoisushi/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Hanoi Sushi. Todos los derechos reservados.</p></div>
+    </footer>
+
+    <a href="https://wa.me/56222447450?text=Hola,%20tengo%20una%20consulta" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simular envío
+            this.style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // También se puede redirigir a WhatsApp con el mensaje
+            const nombre = document.getElementById('nombre').value;
+            const asunto = document.getElementById('asunto').value;
+            const mensaje = document.getElementById('mensaje').value;
+            const whatsappMsg = `Hola, soy ${nombre}. Asunto: ${asunto}. ${mensaje}`;
+            
+            setTimeout(() => {
+                if(confirm('¿Deseas enviar también por WhatsApp para una respuesta más rápida?')) {
+                    window.open(`https://wa.me/56222447450?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
+                }
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

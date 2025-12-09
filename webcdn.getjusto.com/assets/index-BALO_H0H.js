@@ -1,0 +1,1 @@
+import{j as o}from"./jsx-runtime-BGxL3LVy.js";import{f as m}from"./index-Dh_ekISa.js";import{b as e}from"./useWebsite-B2NA3eOh.js";function f(r){const t=e();return o.jsx(o.Fragment,{children:m(r.number,r.format,r.countryCode||t)})}export{f as F};
