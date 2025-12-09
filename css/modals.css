@@ -2433,3 +2433,111 @@
     width: 300px;
     height: 300px;
 }
+
+
+/* ==========================================
+   FIX SCROLL EN MODALES Y CARRITO
+   ========================================== */
+
+/* Asegurar que el body del modal tenga scroll */
+.modal-body {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior: contain;
+}
+
+/* Fix para el carrito */
+#cartModal .modal-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+}
+
+#cartModal .modal-body {
+    flex: 1;
+    overflow-y: auto !important;
+    min-height: 0;
+}
+
+#cartModal .cart-footer {
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    background: var(--gray-100);
+    z-index: 10;
+}
+
+/* Fix para checkout */
+#checkoutModal .modal-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 95vh;
+}
+
+#checkoutModal .modal-body {
+    flex: 1;
+    overflow-y: auto !important;
+    min-height: 0;
+    padding-bottom: 100px;
+}
+
+#checkoutModal .modal-footer {
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+/* Fix general para todos los modales en móvil */
+@media (max-width: 768px) {
+    .modal-overlay {
+        padding: 0;
+        align-items: flex-end;
+    }
+    
+    .modal-content {
+        max-height: 95vh !important;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        margin: 0;
+    }
+    
+    .modal-body {
+        max-height: calc(95vh - 180px) !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    .cart-items {
+        max-height: none !important;
+        overflow: visible !important;
+    }
+    
+    /* Hacer el footer del carrito siempre visible */
+    .cart-footer {
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+        z-index: 100;
+    }
+}
+
+/* Mejorar touch scroll */
+.modal-body,
+.cart-items,
+.order-items,
+.checkout-section-body {
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Indicador visual de scroll */
+.modal-body::after {
+    content: '';
+    display: block;
+    height: 20px;
+    flex-shrink: 0;
+}
