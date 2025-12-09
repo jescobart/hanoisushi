@@ -31,14 +31,20 @@ const OdooAPI = {
                 email: orderData.customer?.email || '',
                 address: orderData.customer?.address || orderData.address
             },
-            items: orderData.items.map(item => ({
-                product: item.name,
-                quantity: item.quantity,
-                unitPrice: item.price,
-                subtotal: item.price * item.quantity,
-                extras: item.salsas?.map(s => s.name).join(', ') || 'Ninguno',
-                notes: item.notes || ''
-            })),
+            items: orderData.items.map(item => {
+                // Calcular precio de salsas
+                const salsasPrice = item.salsas ? item.salsas.reduce((sum, s) => sum + (s.price || 0), 0) : 0;
+                const priceWithSalsas = item.price + salsasPrice;
+                return {
+                    product: item.name,
+                    quantity: item.quantity,
+                    unitPrice: item.price,
+                    salsasPrice: salsasPrice,
+                    subtotal: priceWithSalsas * item.quantity,
+                    extras: item.salsas?.map(s => s.name).join(', ') || 'Ninguno',
+                    notes: item.notes || ''
+                };
+            }),
             delivery: {
                 type: orderData.deliveryType === 'delivery' ? 'Delivery' : 'Retiro en local',
                 cost: orderData.deliveryCost || 0,
