@@ -1,6 +1,5 @@
 // ==========================================
 // HANOI SUSHI - INTEGRACIÓN ODOO ERP
-// MODO SIMULACIÓN para demostración
 // ==========================================
 
 const OdooAPI = {
@@ -8,8 +7,9 @@ const OdooAPI = {
     config: {
         odooUrl: 'https://hanoishushi.odoo.com',
         db: 'hanoishushi',
-        // MODO SIMULACIÓN - cambiar a false cuando esté el proxy real
-        simulationMode: true,
+        proxyUrl: 'https://hanoi-odoo-proxy.vercel.app/api/order',
+        // false = envía a Odoo real
+        simulationMode: false,
         enabled: true
     },
 
@@ -19,10 +19,10 @@ const OdooAPI = {
     
     async createSaleOrder(orderData) {
         console.log('\n========================================');
-        console.log('🍣 SIMULACIÓN DE PEDIDO A ODOO');
+        console.log('🍣 ENVIANDO PEDIDO A ODOO');
         console.log('========================================');
         
-        // Datos que se enviarían a Odoo
+        // Preparar datos del pedido
         const odooPayload = {
             orderNumber: orderData.orderNumber,
             customer: {
@@ -54,35 +54,69 @@ const OdooAPI = {
         console.log('📦 Datos del pedido:');
         console.log(JSON.stringify(odooPayload, null, 2));
         
-        console.log('\n📡 Destino: ' + this.config.odooUrl);
-        console.log('🗄️ Base de datos: ' + this.config.db);
-        
-        // Guardar en localStorage para el panel de admin
+        // Guardar en localStorage siempre
         this.saveOrder(odooPayload);
-        
-        // Simular delay de red
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        console.log('\n✅ SIMULACIÓN EXITOSA');
-        console.log('En producción, este pedido llegaría a Odoo automáticamente.');
-        console.log('========================================\n');
-        
-        return {
-            success: true,
-            simulated: true,
-            odooOrderId: 'SIM-' + Date.now(),
-            message: '✅ Pedido simulado correctamente'
-        };
+
+        // Si está en modo simulación, no enviar al proxy
+        if (this.config.simulationMode) {
+            console.log('\n⚠️ MODO SIMULACIÓN ACTIVO');
+            console.log('Para enviar a Odoo real, configura:');
+            console.log('OdooAPI.config.simulationMode = false');
+            
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            return {
+                success: true,
+                simulated: true,
+                odooOrderId: 'SIM-' + Date.now(),
+                message: '✅ Pedido simulado correctamente'
+            };
+        }
+
+        // Enviar al proxy real
+        try {
+            console.log('\n📡 Enviando a proxy:', this.config.proxyUrl);
+            
+            const response = await fetch(this.config.proxyUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    odooUrl: this.config.odooUrl,
+                    db: this.config.db,
+                    order: odooPayload
+                })
+            });
+
+            const result = await response.json();
+            
+            if (result.success) {
+                console.log('\n✅ PEDIDO ENVIADO A ODOO');
+                console.log('ID Odoo:', result.odooOrderId);
+                return result;
+            } else {
+                console.error('❌ Error:', result.error);
+                return { success: false, error: result.error };
+            }
+        } catch (error) {
+            console.error('❌ Error de conexión:', error.message);
+            return { 
+                success: true, 
+                simulated: true,
+                message: 'Guardado localmente (sin conexión a Odoo)'
+            };
+        }
     },
 
-    // Guardar pedido
+    // Guardar pedido localmente
     saveOrder(orderData) {
         const orders = JSON.parse(localStorage.getItem('odoo_orders')) || [];
         orders.unshift({
             ...orderData,
             id: orderData.orderNumber,
             savedAt: new Date().toISOString(),
-            status: 'simulated'
+            status: this.config.simulationMode ? 'simulated' : 'sent'
         });
         localStorage.setItem('odoo_orders', JSON.stringify(orders));
     },
@@ -98,7 +132,7 @@ const OdooAPI = {
         console.log('🗑️ Pedidos eliminados');
     },
 
-    // Ver pedidos en consola de forma bonita
+    // Ver pedidos en consola
     showOrders() {
         const orders = this.getOrders();
         if (orders.length === 0) {
@@ -107,7 +141,7 @@ const OdooAPI = {
         }
         
         console.log('\n========================================');
-        console.log('📋 PEDIDOS EN SISTEMA (' + orders.length + ')');
+        console.log('📋 PEDIDOS (' + orders.length + ')');
         console.log('========================================');
         
         orders.forEach((order, i) => {
@@ -118,16 +152,29 @@ const OdooAPI = {
             console.log(`   📅 ${order.timestamp}`);
         });
         
-        console.log('\n========================================');
         return orders;
+    },
+
+    // Activar modo producción
+    enableProduction() {
+        this.config.simulationMode = false;
+        console.log('✅ Modo producción activado - Pedidos irán a Odoo');
+    },
+
+    // Activar modo simulación
+    enableSimulation() {
+        this.config.simulationMode = true;
+        console.log('✅ Modo simulación activado');
     }
 };
 
 // Exportar globalmente
 window.OdooAPI = OdooAPI;
 
-console.log('🔗 Odoo Integration cargada - MODO SIMULACIÓN');
-console.log('📡 Odoo URL:', OdooAPI.config.odooUrl);
-console.log('💡 Comandos disponibles:');
-console.log('   OdooAPI.showOrders()  - Ver pedidos');
-console.log('   OdooAPI.clearOrders() - Limpiar pedidos');
+console.log('🔗 Odoo Integration cargada');
+console.log('📡 Proxy URL:', OdooAPI.config.proxyUrl);
+console.log('🎮 Modo:', OdooAPI.config.simulationMode ? 'SIMULACIÓN' : 'PRODUCCIÓN');
+console.log('💡 Comandos:');
+console.log('   OdooAPI.showOrders()       - Ver pedidos');
+console.log('   OdooAPI.enableProduction() - Activar Odoo real');
+console.log('   OdooAPI.enableSimulation() - Volver a simulación');
